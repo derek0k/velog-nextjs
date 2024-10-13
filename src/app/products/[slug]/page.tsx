@@ -5,6 +5,8 @@ type Props = {
   params: { slug: string };
 };
 
+export const revalidate = 3;
+
 export function generateMetadata({ params }: Props) {
   return {
     title: `Fancy Product ${params.slug}`,
