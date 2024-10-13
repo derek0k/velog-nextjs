@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../styles/globals.css";
 import Link from "next/link";
+import { Open_Sans } from "next/font/google";
 
 const geistSans = localFont({
   src: "../../public/fonts/GeistVF.woff",
@@ -12,6 +13,11 @@ const geistMono = localFont({
   src: "../../public/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const sans = Open_Sans({
+  weight: "700",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +39,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header>
-          <nav>
+          <nav className={sans.className}>
             <Link href="/products">Products</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
