@@ -14,17 +14,17 @@ export function generateMetadata({ params }: Props) {
 // https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 
-export default function Product({ params: { slug } }: Props) {
-  const product = getProduct(slug);
+export default async function Product({ params: { slug } }: Props) {
+  const product = await getProduct(slug);
   if (!product) {
     notFound();
   }
-  return <div>{product} Info</div>;
+  return <div>{product.name} Info</div>;
 }
 
-export function generateStaticParams() {
-  const products = getProducts();
+export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((product) => ({
-    slug: product,
+    slug: product.id,
   }));
 }

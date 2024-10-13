@@ -1,8 +1,8 @@
 import { getProducts } from "@/service/products";
 import Link from "next/link";
 
-export default function Products() {
-  const products = getProducts();
+export default async function Products() {
+  const products = await getProducts();
 
   return (
     <>
