@@ -1,3 +1,4 @@
+import GoProductsButton from "@/components/GoProductsButton";
 import { getProduct, getProducts } from "@/service/products";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -31,6 +32,7 @@ export default async function Product({ params: { slug } }: Props) {
         width="300"
         height="300"
       />
+      <GoProductsButton />
     </>
   );
 }
