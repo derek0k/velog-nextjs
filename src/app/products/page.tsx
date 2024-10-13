@@ -1,3 +1,4 @@
+import MeowArticle from "@/components/MeowArticle";
 import { getProducts } from "@/service/products";
 import Link from "next/link";
 
@@ -14,6 +15,7 @@ export default async function Products() {
           <Link href={`/products/${item.id}`}>{item.name}</Link>
         </li>
       ))}
+      <MeowArticle />
     </>
   );
 }
