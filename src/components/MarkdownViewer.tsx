@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function MarkdownViewer({ content }: { content: string }) {
   return (
     <ReactMarkdown
-      className="prose lg:prose-xl max-w-none"
+      className="prose max-w-none"
       remarkPlugins={[remarkGfm]}
       components={{
         code(props) {

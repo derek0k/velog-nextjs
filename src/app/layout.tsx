@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../styles/globals.css";
-import Link from "next/link";
 import { Open_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,7 +17,6 @@ const geistMono = localFont({
 });
 
 const sans = Open_Sans({
-  weight: "700",
   subsets: ["latin"],
 });
 
@@ -36,10 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
+    <html lang="ko" className={sans.className}>
       <body className="flex flex-col w-full max-w-screen-2xl mx-auto">
         <Header />
         <main className="grow">{children}</main>
