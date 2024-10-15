@@ -10,6 +10,8 @@ export type Post = {
   featured: boolean;
 };
 
+export type PostData = Post & { content: string };
+
 export async function getFeaturedPosts(): Promise<Post[]> {
   return getAllPosts().then((posts) => posts.filter((post) => post.featured));
 }
@@ -21,8 +23,18 @@ export async function getNonFeaturedPosts(): Promise<Post[]> {
 export async function getAllPosts(): Promise<Post[]> {
   const filePath = path.join(process.cwd(), "data", "posts.json");
   const data = await fs.readFile(filePath, "utf-8");
-  // 자바스크립트 객체로 변환
   const posts: Post[] = JSON.parse(data);
 
   return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+}
+
+export async function getPostData(fileName: string): Promise<PostData> {
+  const filePath = path.join(process.cwd(), "data", "posts", `${fileName}.md`);
+  const content = await fs.readFile(filePath, "utf-8");
+
+  const metadata = await getAllPosts() //
+    .then((posts) => posts.find((post) => post.path === fileName));
+  if (!metadata) throw new Error(`Doesn't exist file name : ${fileName} `);
+
+  return { ...metadata, content };
 }
