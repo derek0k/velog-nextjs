@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import { Metadata } from "next";
 import { AiFillGithub, AiFillLinkedin, AiFillYoutube } from "react-icons/ai";
 
 const LINKS = [
@@ -6,6 +7,11 @@ const LINKS = [
   { icon: <AiFillLinkedin />, url: "https://kr.linkedin.com/" },
   { icon: <AiFillYoutube />, url: "https://www.youtube.com/" },
 ];
+
+export const metadata: Metadata = {
+  title: "Contact Me",
+  description: "Send email to Derek",
+};
 
 export default function ContactPage() {
   return (
