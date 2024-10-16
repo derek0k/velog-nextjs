@@ -11,16 +11,20 @@ export default function MarkdownViewer({ content }: { content: string }) {
       remarkPlugins={[remarkGfm]}
       components={{
         code(props) {
-          const { children, className, node, ref, ...rest } = props;
+          const { children, className, ref, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <SyntaxHighlighter
-              children={String(children).replace(/\n$/, "")}
-              language={match[1]}
-              PreTag="div"
-              {...rest}
-              style={materialDark}
-            />
+            <>
+              {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+              <SyntaxHighlighter
+                language={match[1]}
+                PreTag="div"
+                {...rest}
+                style={materialDark}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
+            </>
           ) : (
             <code {...rest} className={className}>
               {children}
